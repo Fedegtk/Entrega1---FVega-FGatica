@@ -1,0 +1,30 @@
+{% extends "home.html" %}
+
+{% load static %}
+
+{% block contenido %}
+    <div class="estilo_formularios">
+        <form class="formDataCursos" action="/AppCoder/cursos/" method="POST"> {% csrf_token %}
+            <input type="text" name="materia" placeholder="Materia">
+            <input type="number" name="numero" placeholder="Numero">
+            <button type="submit" class="btn btn-primary btndj">Registrar</button>
+        </form>
+    </div>
+    <div class="estilo_formularios">
+        <form class="formDataEstudiantes" action="/AppCoder/buscar_curso/" method="GET">
+            <input type="number" name="numero" placeholder="Numero">
+            <button type="submit" class="btn btn-primary btndj">Buscar</button>
+        </form>
+    </div>
+    <div>
+        {% if cursos %}
+        <ul>
+            {% for curso in cursos %}
+            <li>Resultado de la busqueda:</li>
+            <li>Materia: {{curso.materia}}</li>
+            <li>Numero: {{curso.numero}}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+{% endblock %}

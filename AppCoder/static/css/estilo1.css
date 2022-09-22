@@ -1,0 +1,12 @@
+.estilo_1{
+    position: relative;
+    top: 75px;
+}
+
+.estilo_formularios{
+    background-color: slategray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}

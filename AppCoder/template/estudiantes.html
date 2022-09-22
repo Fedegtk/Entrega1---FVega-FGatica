@@ -1,0 +1,32 @@
+{% extends "home.html" %}
+
+{% load static %}
+
+{% block contenido %}
+    <div class="estilo_formularios">
+        <form class="formDataEstudiantes" action="/AppCoder/estudiantes/" method="POST"> {% csrf_token %}
+            <input type="text" name="nombre" placeholder="Nombre">
+            <input type="text" name="apellido" placeholder="Apellido">
+            <input type="email" name="email" placeholder="Email">
+            <button type="submit" class="btn btn-primary btndj">Registrar</button>
+        </form>
+    </div>
+    <div class="estilo_formularios">
+        <form class="formDataEstudiantes" action="/AppCoder/buscar_estudiante/" method="GET">
+            <input type="email" name="email" placeholder="Email">
+            <button type="submit" class="btn btn-primary btndj">Buscar</button>
+        </form>
+    </div>
+    <div>
+        {% if estudiantes %}
+        <ul>
+            {% for estudiante in estudiantes %}
+            <li>Resultado de la busqueda:</li>
+            <li>Nombre: {{estudiante.nombre}}</li>
+            <li>Apellido: {{estudiante.apellido}}</li>
+            <li>Email: {{estudiante.email}}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+{% endblock %}
